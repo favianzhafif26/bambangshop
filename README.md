@@ -61,7 +61,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [V] Commit: `Implement subscribe function in Notification controller.`
     -   [V] Commit: `Implement unsubscribe function in Notification service.`
     -   [V] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [V] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -83,5 +83,13 @@ This is the place for you to write reflections:
 3. Ya, `DashMap` tetap diperlukan meskipun sudah menggunakan desain singleton. Singleton hanya memastikan bahwa data bersifat tunggal secara global, tetapi tidak secara otomatis membuatnya aman untuk diakses oleh banyak thread secara bersamaan (thread-safe). `DashMap` digunakan untuk menjamin concurrent access ke data `SUBSCRIBERS`.
 
 #### Reflection Publisher-2
+
+1. Dalam arsitektur Model-View-Controller (MVC), pemisahan Service dan Repository dari Model didasarkan pada prinsip desain perangkat lunak seperti Separation of Concerns (SoC) dan Single Responsibility Principle (SRP). Model dalam MVC bertanggung jawab atas representasi data dan aturan bisnis, tetapi jika model juga menangani logika bisnis dan akses ke penyimpanan data, maka kode akan menjadi kompleks, sulit diuji, dan sulit diubah. Repository berfungsi sebagai lapisan yang menangani komunikasi dengan database atau sumber data lainnya, sehingga memungkinkan perubahan sumber data tanpa memengaruhi logika bisnis. Sementara itu, Service bertindak sebagai penghubung antara Model dan Repository dengan menangani logika bisnis yang lebih kompleks serta memfasilitasi interaksi antar-Model. Dengan pemisahan ini, arsitektur menjadi lebih modular, mudah diuji, dan fleksibel untuk dikembangkan.
+
+2. Jika hanya menggunakan Model tanpa Service dan Repository, interaksi antara entitas seperti Program, Subscriber, dan Notification akan meningkatkan kompleksitas kode. Model akan memiliki tight coupling, di mana ia harus menangani logika bisnis dan akses database secara bersamaan, menyebabkan kesulitan dalam pengujian dan pemeliharaan. Selain itu, tanpa Service, logika bisnis yang sama bisa saja diimplementasikan berulang kali di berbagai tempat, menciptakan duplikasi kode yang tidak efisien. Dalam sistem Publisher-Subscriber, misalnya, Model harus menangani pencarian Program yang relevan, mengambil daftar Subscribers yang terdaftar, dan mengirim notifikasi ke masing-masing Subscriber. Jika semua ini dilakukan dalam Model, maka perubahan kecil dalam sistem dapat berdampak besar pada keseluruhan kode, menambah technical debt yang sulit dikelola.
+
+3. Dalam eksplorasi Postman, saya menemukan bahwa alat ini sangat membantu dalam pengujian API. Postman memungkinkan pengembang untuk mengirim berbagai jenis request seperti GET, POST, PUT, DELETE, mengatur parameter, header, serta body untuk menguji endpoint API dengan mudah. Fitur Collection & Environment Variables memungkinkan pengelolaan request dalam skala besar dengan konfigurasi yang dapat digunakan kembali. Selain itu, Postman mendukung Automated Testing, di mana skrip uji otomatis dapat ditambahkan untuk memvalidasi respons API, serta menyediakan Mock Server yang memungkinkan pengujian API tanpa perlu terhubung ke backend secara langsung. Dalam proyek pengembangan perangkat lunak, Postman membantu dalam pengujian endpoint API sebelum diakses oleh frontend, debugging API untuk memastikan request dan response sesuai harapan, serta mendokumentasikan API untuk mempermudah kolaborasi dengan tim lain.
+
+Dengan demikian, pemisahan Service dan Repository dalam MVC menghasilkan kode yang lebih modular dan mudah dipelihara, dibandingkan dengan hanya menggunakan Model, yang akan meningkatkan kompleksitas sistem. Selain itu, Postman menjadi alat yang sangat berguna dalam pengujian API karena fitur-fiturnya yang mendukung efisiensi dan otomatisasi pengujian, yang sangat bermanfaat dalam proyek pengembangan perangkat lunak.
 
 #### Reflection Publisher-3
