@@ -54,7 +54,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [V] Commit: `Implement add function in Subscriber repository.`
     -   [V] Commit: `Implement list_all function in Subscriber repository.`
     -   [V] Commit: `Implement delete function in Subscriber repository.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
+    -   [V] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -75,6 +75,12 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+
+1. Kita tidak memerlukan interface dalam kasus ini, karena satu Model struct sudah mencukupi. Setiap subscriber memiliki perilaku yang seragam, yaitu menerima notifikasi melalui HTTP untuk `product_type` yang mereka subscribe.
+
+2. `DashMap` lebih cocok digunakan dalam kasus ini karena memungkinkan penyimpanan data dengan key yang terjamin keunikannya, seperti ID untuk Program dan URL untuk Subscriber.
+
+3. Ya, `DashMap` tetap diperlukan meskipun sudah menggunakan desain singleton. Singleton hanya memastikan bahwa data bersifat tunggal secara global, tetapi tidak secara otomatis membuatnya aman untuk diakses oleh banyak thread secara bersamaan (thread-safe). `DashMap` digunakan untuk menjamin concurrent access ke data `SUBSCRIBERS`.
 
 #### Reflection Publisher-2
 
