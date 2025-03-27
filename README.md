@@ -67,7 +67,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [V] Commit: `Implement notify function in Notification service to notify each Subscriber.`
     -   [V] Commit: `Implement publish function in Program service and Program controller.`
     -   [V] Commit: `Edit Product service methods to call notify after create/delete.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
+    -   [V] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -93,3 +93,11 @@ This is the place for you to write reflections:
 Dengan demikian, pemisahan Service dan Repository dalam MVC menghasilkan kode yang lebih modular dan mudah dipelihara, dibandingkan dengan hanya menggunakan Model, yang akan meningkatkan kompleksitas sistem. Selain itu, Postman menjadi alat yang sangat berguna dalam pengujian API karena fitur-fiturnya yang mendukung efisiensi dan otomatisasi pengujian, yang sangat bermanfaat dalam proyek pengembangan perangkat lunak.
 
 #### Reflection Publisher-3
+
+1. Tutorial ini menerapkan Push Model dari Observer Pattern, di mana publisher secara langsung mengirimkan data notifikasi lengkap ke setiap subscriber. Hal ini dapat dilihat ketika method `update()` dipanggil, di mana setiap subscriber menerima payload notifikasi secara langsung tanpa perlu mengambil data sendiri dari publisher.
+
+2. Jika dalam kasus tutorial ini digunakan Pull Model, keuntungannya adalah subscriber memiliki kontrol lebih besar atas kapan dan bagaimana mereka mengambil data. Dengan pendekatan ini, subscriber dapat mengambil data secara selektif, sehingga sistem menjadi lebih efisien dalam menangani notifikasi yang tidak selalu relevan.  
+
+Namun, kekurangannya terletak pada peningkatan kompleksitas sistem, karena setiap subscriber harus secara aktif mengambil data dari publisher. Hal ini dapat membebani server, terutama jika banyak subscriber mengajukan permintaan data secara bersamaan.
+
+3. Tanpa menggunakan multi-threading, notifikasi akan dikirim ke setiap subscriber secara berurutan, di mana subscriber berikutnya hanya menerima notifikasi setelah pengiriman ke subscriber sebelumnya selesai. Konsekuensinya, proses pengiriman bisa menjadi lambat, terutama jika jumlah subscriber sangat banyak, karena setiap pengiriman harus menunggu hingga yang sebelumnya selesai.
